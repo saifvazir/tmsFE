@@ -9,35 +9,30 @@ app.controller('myCtrl', function($scope, $http) {
 
 
     	$scope.register= function(data){
-    			
+    			var payload={
+    				'Username':data.Username,
+    				'Email_id':data.Email_id,
+    				'Password':data.Password
+    			};   
+            var request=$http({  
+                        method: 'POST',  
+                        url: "http://192.168.0.106:5000/api/v1.0/register",
+                        headers: { 'Content-Type': 'application/json' },   
+                        data: {payload} 
 
+                    });
+                    return request.then(handleSuccess, handleFailure);
 
     	}
-    	$scope.sid= function() {
+    	function handleSuccess(response){
+            console.log(response);
+            console.log(response.data);
+            return (response.data);
+            };
 
-			    $('#login-form-link').click(function(e) {
-					$("#login-form").delay(100).fadeIn(100);
-			 		$("#register-form").fadeOut(100);
-					$('#register-form-link').removeClass('active');
-					$(this).addClass('active');
-					e.preventDefault();
-				});
-				$('#register-form-link').click(function(e) {
-					$("#register-form").delay(100).fadeIn(100);
-			 		$("#login-form").fadeOut(100);
-					$('#login-form-link').removeClass('active');
-					$(this).addClass('active');
-					e.preventDefault();
-				});
-
-			}
-
-
-
-
-
-
-
+    function handleFailure(response){
+            return (response.data);
+            }
 
     });
 
