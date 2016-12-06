@@ -11,19 +11,33 @@
 <body>
 	<div class="container" ng-app="myApp" ng-controller="myCtrl">
 		<form class="form" role="form">
+			<div class="row">
 			<div class="form-group col-sm-12  ">
 				<input type="text" name="username" class="form-control" placeholder="Username" ng-model="data.Username">
 			</div>
+			</div>
+			<div class="row">
 			<div class="form-group col-sm-12 ">
 				<input type="email" name="email" class="form-control" placeholder="Email Address" ng-model="data.Email_id">
 			</div>
+			</div>
+			<div class="row">
 			<div class="form-group col-sm-12">
 				<input type="password" name="password"  class="form-control" placeholder="Password" ng-model="data.Password">
+			</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
 					<div class="col-sm-12">
 						<input type="submit" class="form-control btn btn-success" value="Register Now" ng-click="register(data)">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<input type="submit" class="form-control btn btn-danger" value="Signin with Google" ng-init="data.google=1" ng-click="register(data)">
+					</div>
+					<div class="col-sm-6">
+						<input type="submit" class="form-control btn btn-primary" value="Signin with Facebook" ng-init="data.fb=1" ng-click="register(data)">
 					</div>
 				</div>
 			</div>
