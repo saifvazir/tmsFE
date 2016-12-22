@@ -9,20 +9,21 @@ import { FooterComponent}  from './components/footer/footer.component';
 import { HomeComponent}  from './components/home/home.component';
 import { RegisterComponent,KeysPipe}  from './components/register/register.component';
 import { LoginComponent}  from './components/login/login.component';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AuthGuard } from './services/authguard/auth.guard';
+import {AuthService} from "./services/authservice/auth.service";
+import {AUTH_PROVIDERS} from "angular2-jwt";
 const appRoutes: Routes = [
-  { path: 'admin', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'unauthorized', component: UnauthorizedComponent, },
-  { path: '', component: RegisterComponent },
-  { path: 'login', component: LoginComponent},
- 
-
+    { path: '', component:LoginComponent },
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent},
+    { path: '**', component: LoginComponent, },
 ];
 
 @NgModule({
   imports:      [ BrowserModule ,FormsModule,HttpModule,RouterModule.forRoot(appRoutes)],
-  declarations: [ AppComponent,RegisterComponent,KeysPipe,NavbarComponent,FooterComponent,LoginComponent ],
-  bootstrap:    [ AppComponent ]
+  declarations: [ AppComponent,HomeComponent,RegisterComponent,KeysPipe,NavbarComponent,FooterComponent,LoginComponent ],
+  bootstrap:    [ AppComponent ],
+  providers:    [AUTH_PROVIDERS,AuthGuard,AuthService]
 })
 export class AppModule { }

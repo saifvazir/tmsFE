@@ -16,11 +16,18 @@ var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var navbar_component_1 = require("./components/navbar/navbar.component");
 var footer_component_1 = require("./components/footer/footer.component");
+var home_component_1 = require("./components/home/home.component");
 var register_component_1 = require("./components/register/register.component");
 var login_component_1 = require("./components/login/login.component");
+var auth_guard_1 = require("./services/authguard/auth.guard");
+var auth_service_1 = require("./services/authservice/auth.service");
+var angular2_jwt_1 = require("angular2-jwt");
 var appRoutes = [
-    { path: '', component: register_component_1.RegisterComponent },
+    { path: '', component: login_component_1.LoginComponent },
+    { path: 'home', component: home_component_1.HomeComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'login', component: login_component_1.LoginComponent },
+    { path: '**', component: login_component_1.LoginComponent, },
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -30,8 +37,9 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(appRoutes)],
-        declarations: [app_component_1.AppComponent, register_component_1.RegisterComponent, register_component_1.KeysPipe, navbar_component_1.NavbarComponent, footer_component_1.FooterComponent, login_component_1.LoginComponent],
-        bootstrap: [app_component_1.AppComponent]
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, register_component_1.RegisterComponent, register_component_1.KeysPipe, navbar_component_1.NavbarComponent, footer_component_1.FooterComponent, login_component_1.LoginComponent],
+        bootstrap: [app_component_1.AppComponent],
+        providers: [angular2_jwt_1.AUTH_PROVIDERS, auth_guard_1.AuthGuard, auth_service_1.AuthService]
     }),
     __metadata("design:paramtypes", [])
 ], AppModule);

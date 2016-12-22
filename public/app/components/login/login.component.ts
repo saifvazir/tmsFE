@@ -19,12 +19,18 @@ export class LoginComponent implements OnInit {
     loading = false;
     error = '';
     thing:string;
-    data :credentials;
+    localUser :credentials;
     jwtHelper: JwtHelper = new JwtHelper();
     constructor(
         private router: Router,
         private authenticationService: AuthService,
-        public authHttp:AuthHttp) { }
+        public authHttp:AuthHttp) {
+        this.localUser={
+            Username:'',
+            Password:''
+        }
+
+    }
  
     ngOnInit() {
         // reset login status
@@ -41,7 +47,7 @@ export class LoginComponent implements OnInit {
         );
     }
     login() {
-    let checknow = this.authenticationService.login(this.data);
+    let checknow = this.authenticationService.login(this.localUser);
     checknow.then((res) => {
       if(res) {
         this.router.navigate(['/home']);
