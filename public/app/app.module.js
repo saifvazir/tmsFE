@@ -23,7 +23,7 @@ var auth_guard_1 = require("./services/authguard/auth.guard");
 var auth_service_1 = require("./services/authservice/auth.service");
 var angular2_jwt_1 = require("angular2-jwt");
 var appRoutes = [
-    { path: '', component: login_component_1.LoginComponent },
+    { path: '', component: register_component_1.RegisterComponent },
     { path: 'home', component: home_component_1.HomeComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'login', component: login_component_1.LoginComponent },

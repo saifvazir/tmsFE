@@ -16,7 +16,7 @@ export class AuthService {
         this.http.post('http://localhost:3000/authenticate', credentials, {headers: headers}).subscribe((data) => {
             if(data.json().success.status) {
                 localStorage.setItem('auth_key', data.json().payload.token);
-                localStorage.setItem('user_id', data.json().payload.user_id);
+                localStorage.setItem('user_id', credentials.Username);
                 this.isAuthenticated = true;}
                 resolve(this.isAuthenticated);
             }

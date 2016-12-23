@@ -15,5 +15,7 @@
             <li><a routerLink="/login">Login</a></li>
           </ul>
         </div><!--/.nav-collapse -->
+        <button id="login" *ngIf="!auth.loggedIn()">Log In</button>
+        <button id="logout" *ngIf="auth.loggedIn()">Log Out</button>
       </div>
 </nav>
