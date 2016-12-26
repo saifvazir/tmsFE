@@ -12,10 +12,11 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a routerLink="/">Register</a></li>
-            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/login" *ngIf="!auth.loggedIn()">Login</a></li>
+            <li><a id="logout" *ngIf="auth.loggedIn()">Log Out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
-        <button id="login" *ngIf="!auth.loggedIn()">Log In</button>
-        <button id="logout" *ngIf="auth.loggedIn()">Log Out</button>
+        
+        
       </div>
 </nav>

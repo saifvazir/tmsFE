@@ -9,24 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var auth_service_1 = require("../../services/authservice/auth.service");
-var NavbarComponent = (function () {
-    function NavbarComponent(authService) {
-        this.authService = authService;
-        this.auth = authService;
+var DashboardComponent = (function () {
+    function DashboardComponent() {
     }
-    NavbarComponent.prototype.ngOnInit = function () {
-    };
-    return NavbarComponent;
+    return DashboardComponent;
 }());
-NavbarComponent = __decorate([
+DashboardComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'navbar',
-        templateUrl: 'navbar.component.html',
-        providers: [auth_service_1.AuthService]
+        selector: 'dash',
+        templateUrl: 'dashboard.component.html',
     }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
-], NavbarComponent);
-exports.NavbarComponent = NavbarComponent;
-//# sourceMappingURL=navbar.component.js.map
+    __metadata("design:paramtypes", [])
+], DashboardComponent);
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map

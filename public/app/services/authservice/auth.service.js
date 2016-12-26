@@ -21,15 +21,18 @@ var AuthService = (function () {
         var _this = this;
         var headers = new http_1.Headers();
         return new Promise(function (resolve) {
-            _this.http.post('http://localhost:3000/authenticate', credentials, { headers: headers }).subscribe(function (data) {
+            _this.http.post('http://localhost:3000/authenticate', JSON.stringify({ "payload": { credentials: credentials } }), { headers: headers }).subscribe(function (data) {
                 if (data.json().success.status) {
                     localStorage.setItem('auth_key', data.json().payload.token);
-                    localStorage.setItem('user_id', data.json().payload.user_id);
+                    localStorage.setItem('user_id', credentials.Username);
                     _this.isAuthenticated = true;
                 }
                 resolve(_this.isAuthenticated);
             });
         });
+    };
+    AuthService.prototype.checkUser = function (credential) {
+        return this.http.post('https://abc.com', JSON.stringify({ "payload": { "Username": credential } }));
     };
     AuthService.prototype.logout = function () {
         localStorage.removeItem('auth_key');

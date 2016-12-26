@@ -48,6 +48,9 @@ var LoginComponent = (function () {
             }
         });
     };
+    LoginComponent.prototype.checkUser = function () {
+        this.authenticationService.checkUser(this.localUser.Username);
+    };
     return LoginComponent;
 }());
 LoginComponent = __decorate([

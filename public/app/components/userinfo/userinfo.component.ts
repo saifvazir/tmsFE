@@ -8,7 +8,8 @@ import {User} from '../dashboard/dashboard.component';
     moduleId:module.id,
     selector: 'userinfo',
     templateUrl: 'userinfo.component.html',
-    providers:[UserInfoService]
+    providers:[UserInfoService],
+    styleUrls:[]
 })
 export class UserInfoComponent implements OnInit{ 
 

@@ -13,7 +13,7 @@ export class AuthService {
   login(credentials:any) {
     var headers = new Headers();
     return new Promise((resolve) => {
-        this.http.post('http://localhost:3000/authenticate', credentials, {headers: headers}).subscribe((data) => {
+        this.http.post('http://localhost:3000/authenticate',JSON.stringify({"payload":{credentials}}), {headers: headers}).subscribe((data) => {
             if(data.json().success.status) {
                 localStorage.setItem('auth_key', data.json().payload.token);
                 localStorage.setItem('user_id', credentials.Username);
@@ -23,7 +23,9 @@ export class AuthService {
         )
     });
   }
-
+  checkUser(credential:string){
+    return this.http.post('https://abc.com',JSON.stringify({"payload":{"Username":credential}})
+  }
   logout(){
     localStorage.removeItem('auth_key'); 
     localStorage.removeItem('user_id'); 

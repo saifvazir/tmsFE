@@ -55,7 +55,10 @@ export class LoginComponent implements OnInit {
         console.log('Invalid user');
       }
     });    
-  }  
+  }
+    checkUser(){
+        this.authenticationService.checkUser(this.localUser.Username);
+    }  
 }
 
   

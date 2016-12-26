@@ -9,24 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var auth_service_1 = require("../../services/authservice/auth.service");
-var NavbarComponent = (function () {
-    function NavbarComponent(authService) {
-        this.authService = authService;
-        this.auth = authService;
+var http_1 = require("@angular/http");
+var angular2_jwt_1 = require("angular2-jwt");
+var UserInfoService = (function () {
+    function UserInfoService(_authHttp) {
+        this._authHttp = _authHttp;
     }
-    NavbarComponent.prototype.ngOnInit = function () {
+    UserInfoService.prototype.getUserInfo = function () {
+        var header = new http_1.Headers();
+        header.append('auth_token', localStorage.getItem('User_id'));
+        return this._authHttp.post('myurl', JSON.stringify({ 'User_id': localStorage.getItem('User_id') }), { headers: header })
+            .map(function (res) { return res.json(); });
     };
-    return NavbarComponent;
+    return UserInfoService;
 }());
-NavbarComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'navbar',
-        templateUrl: 'navbar.component.html',
-        providers: [auth_service_1.AuthService]
-    }),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
-], NavbarComponent);
-exports.NavbarComponent = NavbarComponent;
-//# sourceMappingURL=navbar.component.js.map
+UserInfoService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [angular2_jwt_1.AuthHttp])
+], UserInfoService);
+exports.UserInfoService = UserInfoService;
+//# sourceMappingURL=userinfoservice.js.map
